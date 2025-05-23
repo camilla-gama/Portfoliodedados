@@ -1,0 +1,165 @@
+import argparse
+import json
+import logging
+import sys
+from datetime import datetime, timedelta
+import pandas as pd
+import requests
+
+root = logging.getLogger()
+root.setLevel(logging.INFO)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+root.addHandler(handler)
+LOGGER = logging.getLogger('dyntrace_to_xlsx')
+
+API_URL = 'linkdaAPI'
+
+def get_dataframe(token, zone_id, start_date, end_date):
+
+    token = 'Api-Token ' + token
+
+    headers = {
+        'Authorization': token,
+        'accept': 'application/json; charset=utf-8'
+    }
+
+    start_ts = int(datetime.timestamp(start_date) * 1000)
+    end_ts = int(datetime.timestamp(end_date) * 1000)
+
+    query = f'pageSize=500&from={start_ts}&to={end_ts}' + \
+        f'&problemSelector=managementZoneIds%28%22{zone_id}%22%29&exposeFirstEvent=true'
+
+    dataframes = []
+
+
+    LOGGER.info('Importando dados da API do Dynatrace.')
+
+    response = requests.get(f'{API_URL}/problems?{query}', headers=headers, timeout=60)
+    result = json.loads(response.content)
+    dataframes.append(pd.DataFrame(result.get('problems')))
+    nextpage_key = result.get('nextPageKey')
+
+    while nextpage_key:
+        query = f'&nextPageKey={nextpage_key}'
+        response = requests.get(f'{API_URL}/problems?&{query}', headers=headers, timeout=60)
+        result = json.loads(response.content)
+        dataframes.append(pd.DataFrame(result.get('problems')))
+        nextpage_key = result.get('nextPageKey')
+
+    return pd.concat(dataframes)
+
+
+def dataframe_transform(df):
+
+    def root_cause_entity(target):
+        if target:
+            return target.get('name')
+
+    LOGGER.info('Formatando dados recebidos.')
+
+    new_df = df.copy()
+    new_df['durationMinutes'] = (
+        new_df['endTime'].apply(lambda x :datetime.fromtimestamp(
+            x/1000) if x > 0 else datetime.now()) - new_df['startTime'].apply(
+                lambda x :datetime.fromtimestamp(x/1000))).apply(lambda x:int(x.total_seconds()/60))
+    new_df['affectedEntities'] = new_df['affectedEntities'].apply(lambda x: x[-1].get('name'))
+    new_df['rootCauseEntity'] = new_df['rootCauseEntity'].apply(root_cause_entity)
+    new_df['impactedEntities'] = new_df['impactedEntities'].apply(lambda x: x[-1].get('name'))
+    new_df['entityTags'] = new_df['entityTags'].apply(lambda x: ','.join([z.get('key') for z in x]))
+    new_df['startTimeDate'] = new_df['startTime'].apply(lambda x :datetime.fromtimestamp(x/1000))
+    new_df['startTime'] = new_df['startTime'].apply(
+        lambda x :datetime.fromtimestamp(x/1000).strftime('%Y-%m-%d %H:%M'))
+    new_df['endTime'] = new_df['endTime'].apply(
+        lambda x :datetime.fromtimestamp(x/1000).strftime('%Y-%m-%d %H:%M') if x >= 0 else -1)
+    new_df['firstEvent'] = new_df['firstEvent'].apply(lambda x: x.get('description'))
+
+
+   # df = get_dataframe(token, zone_id, start_date, end_date)
+    # Renomeia as colunas com nomes mais amigáveis
+    new_df = new_df.rename(columns={
+        'displayId': 'ID de Exibição',
+        'zone_id': 'Zona',
+        'affectedEntities': 'Entidades Afetadas',
+        'rootCauseEntity': 'Causa Raiz',
+        'durationMinutes': 'Duração (min)',
+        'startTime': 'Início',
+        'endTime': 'Fim',
+        'severityLevel': 'Severidade',
+        'impactedEntities': 'Entidades Impactadas',
+        'entityTags': 'Tags da Entidade',
+        'firstEvent': 'Primeiro Evento',
+        'problemId': 'ID do Problema',
+        'startTimeDate': 'Data de Início'
+        })
+
+    return new_df.filter([
+        'ID de Exibição',
+        'Zona',
+        'Entidades Afetadas',
+        'Causa Raiz',
+        'Duração (min)',
+        'Início',
+        'Fim',
+        'Severidade',
+        'Entidades Impactadas',
+        'Tags da Entidade',
+        'Primeiro Evento',
+        'ID do Problema',
+        'Data de Início'
+    ])
+ 
+def main():
+    parser = argparse.ArgumentParser(
+        description='Extrai os dados dos dynatrace para um arquivo excel.')
+
+    parser.add_argument(
+        '-tk',
+        '--token',
+        help='Token de acesso a API do dynatrace'
+        type=str,
+        required=True)
+
+    parser.add_argument(
+        '-sd',
+        '--start-date',
+        help='Data de início no formato YYYY-MM-DD, default=NOW-30d.',
+        default=(datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d'))
+
+    parser.add_argument(
+        '-ed',
+        '--end-date',
+        help='Data de fim no formato YYYY-MM-DD, default=NOW.',
+        default=datetime.now().strftime('%Y-%m-%d'))
+
+    parser.add_argument(
+        '-zi',
+        '--zone-id',
+        help='Zone ID do projeto para extração ex: -3748803764158103334',
+        required=True)
+
+    parser.add_argument(
+        '-of',
+        '--output-file',
+        help='Nome do arquivo .xlsx a ser gerado, default=output.xlsx.',
+        default='output.xlsx')
+
+    args = parser.parse_args()
+    start_date = datetime.strptime(args.start_date,"%Y-%m-%d")
+    end_date = datetime.strptime(args.end_date,"%Y-%m-%d")
+    token = args.token
+    zone_id = args.zone_id
+    output_file = args.output_file
+
+    df = get_dataframe(token, zone_id, start_date, end_date)
+
+    result = dataframe_transform(df)
+    LOGGER.info(df)
+    LOGGER.info('Gerando o arquivo %s', args.output_file)
+    result.to_excel (output_file)
+
+if __name__ == '__main__':
+    main()
