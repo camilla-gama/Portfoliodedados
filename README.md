@@ -4,6 +4,10 @@ Este portfólio mostra um pouco do meu conhecimento e meu trabalho com a área d
 Aqui há arquivos, imagens e documentos de alguns estudos que realizei nesta área.
 
 
+- ARQUIVO CURSO BÁSICO DE DADOS:
+  Análise e tratamento dos dados na planilha, para responder as questões específicas.
+  
+
 - PASTA DISPONIBILIDADE PERCEBIDA: 
 Dashboard de Disponibilidade de Sistemas e Clientes. 
 
