@@ -2,3 +2,16 @@
 
 Este portfólio mostra um pouco do meu conhecimento e meu trabalho com a área de dados e de BI. 
 Aqui há arquivos, imagens e documentos de alguns estudos que realizei nesta área.
+
+
+- PASTA DISPONIBILIDADE PERCEBIDA: 
+Dashboard de Disponibilidade de Sistemas e Clientes. 
+
+Nele, é possível filtrar informações de sistemas, mês e ano. Desta forma, conseguimos enxergar o tempo em que o sistema ficou indisponível para o cliente, e se a meta foi atingida. 
+
+Temos três metas, de acordo com a criticidade de cada sistema. 
+Meta 99,50% para sistemas Hiper Críticos
+Meta 99,00% para sistemas Muito Críticos
+Meta 98,50% pata sistemas Críticos. 
+
+A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja, caso tenha alguma manutenção que o mantenha indisponível por algum período, porém a mesma foi efetuada fora do horário de uso, este período indisponível não será considerado. 
