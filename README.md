@@ -16,6 +16,16 @@ Meta 98,50% pata sistemas Críticos.
 
 A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja, caso tenha alguma manutenção que o mantenha indisponível por algum período, porém a mesma foi efetuada fora do horário de uso, este período indisponível não será considerado. 
 
+
+- PASTA API DYNATRACE:
+
+Criação de API em Python para extração de dados de um sistema de monitoramento. 
+Nela contém o código Python para extração, e o código para a execução. 
+
+Em andamento: Criação de automação e janela para que a extração não dependa de códigos, e possa ser acessada por pessoas de outras áreas.
+
+
+
 - PASTA ESTUDO DE CASO:
 - ![image](https://github.com/user-attachments/assets/b9eaf6ec-bc5c-4669-ab91-e66ba87b1427)
 
