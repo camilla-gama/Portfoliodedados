@@ -17,6 +17,8 @@ Meta 98,50% pata sistemas Críticos.
 A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja, caso tenha alguma manutenção que o mantenha indisponível por algum período, porém a mesma foi efetuada fora do horário de uso, este período indisponível não será considerado. 
 
 - PASTA ESTUDO DE CASO:
+- ![image](https://github.com/user-attachments/assets/b9eaf6ec-bc5c-4669-ab91-e66ba87b1427)
+
   
 Premissas:
 O produto é da Indústria, porém, quem realiza a venda é o Distribuidor (Operador Logístico). Portanto, a indústria paga o distribuidor pela venda realizada. Precisamos garantir que o Distribuidor realizou a venda e qual o valor foi praticado.
@@ -28,4 +30,7 @@ Desafio:
 plataforma.
 ✓ Definir até 5 funcionalidades que seriam necessárias para a indústria conseguir um extrato
 de ressarcimento para realizar essa operação.
+
+
+
 
