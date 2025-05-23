@@ -4,7 +4,7 @@ Este portfólio mostra um pouco do meu conhecimento e meu trabalho com a área d
 Aqui há arquivos, imagens e documentos de alguns estudos que realizei nesta área.
 
 
-<a href="https://raw.github.com/camilla-gama/Portfoliodedados/main/Curso%20b%C3%A1sico%20Dados.xlsx" download> - CURSO BÁSICO DE DADOS 
+- <a href="https://raw.github.com/camilla-gama/Portfoliodedados/main/Curso%20b%C3%A1sico%20Dados.xlsx" download> CURSO BÁSICO DE DADOS 
 </a>
   
   Análise e tratamento dos dados na planilha, para responder as questões específicas.
