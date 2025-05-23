@@ -5,10 +5,12 @@ Aqui há arquivos, imagens e documentos de alguns estudos que realizei nesta ár
 
 
 - [CURSO BÁSICO DE DADOS:](https://github.com/camilla-gama/Portfoliodedados/blob/main/Curso%20b%C3%A1sico%20Dados.xlsx)
+- 
   Análise e tratamento dos dados na planilha, para responder as questões específicas.
   
 
 - [DISPONIBILIDADE PERCEBIDA](https://github.com/camilla-gama/Portfoliodedados/tree/main/Disponibilidade%20Percebida)
+  
 Dashboard de Disponibilidade de Sistemas e Clientes. 
 
 Nele, é possível filtrar informações de sistemas, mês e ano. Desta forma, conseguimos enxergar o tempo em que o sistema ficou indisponível para o cliente, e se a meta foi atingida. 
