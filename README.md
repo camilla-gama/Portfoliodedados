@@ -42,5 +42,8 @@ plataforma.
 de ressarcimento para realizar essa operação.
 
 
+-ARQUIVO SQL:
+
+Estudo de banco de dados, com questões respondidas em linguagem SQL.
 
 
