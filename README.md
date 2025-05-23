@@ -4,11 +4,11 @@ Este portfólio mostra um pouco do meu conhecimento e meu trabalho com a área d
 Aqui há arquivos, imagens e documentos de alguns estudos que realizei nesta área.
 
 
-- ARQUIVO CURSO BÁSICO DE DADOS:
+- [CURSO BÁSICO DE DADOS:](https://github.com/camilla-gama/Portfoliodedados/blob/main/Curso%20b%C3%A1sico%20Dados.xlsx)
   Análise e tratamento dos dados na planilha, para responder as questões específicas.
   
 
-- [PASTA DISPONIBILIDADE PERCEBIDA](https://github.com/camilla-gama/Portfoliodedados/tree/main/Disponibilidade%20Percebida)
+- [DISPONIBILIDADE PERCEBIDA](https://github.com/camilla-gama/Portfoliodedados/tree/main/Disponibilidade%20Percebida)
 Dashboard de Disponibilidade de Sistemas e Clientes. 
 
 Nele, é possível filtrar informações de sistemas, mês e ano. Desta forma, conseguimos enxergar o tempo em que o sistema ficou indisponível para o cliente, e se a meta foi atingida. 
@@ -21,7 +21,7 @@ Meta 98,50% pata sistemas Críticos.
 A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja, caso tenha alguma manutenção que o mantenha indisponível por algum período, porém a mesma foi efetuada fora do horário de uso, este período indisponível não será considerado. 
 
 
-- [PASTA API DYNATRACE](https://github.com/camilla-gama/Portfoliodedados/tree/main/API%20Dynatrace):
+- [API DYNATRACE](https://github.com/camilla-gama/Portfoliodedados/tree/main/API%20Dynatrace):
 
 Criação de API em Python para extração de dados de um sistema de monitoramento. 
 Nela contém o código Python para extração, e o código para a execução. 
@@ -30,7 +30,7 @@ Em andamento: Criação de automação e janela para que a extração não depen
 
 
 
-- PASTA ESTUDO DE CASO:
+- [ESTUDO DE CASO:](https://github.com/camilla-gama/Portfoliodedados/tree/main/Estudo%20de%20Caso)
 - ![image](https://github.com/user-attachments/assets/b9eaf6ec-bc5c-4669-ab91-e66ba87b1427)
 
   
@@ -46,7 +46,7 @@ plataforma.
 de ressarcimento para realizar essa operação.
 
 
-- ARQUIVO SQL:
+- [SQL:](https://github.com/camilla-gama/Portfoliodedados/blob/main/SQL.pdf)
 
 Estudo de banco de dados, com questões respondidas em linguagem SQL.
 
