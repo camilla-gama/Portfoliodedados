@@ -1,0 +1,19 @@
+Execução da API:
+
+
+Criação do ambiente virtual (Quando o Python é acima de 3.12)  ////////Lembrar de baixar o python 3.12 antes!!
+>> py -3.12 -m venv .venv
+  
+Criação do ambiente virtual (Python até 3.12)
+>> python -m venv .venv
+
+Entrar no ambiente virtual
+>> .venv\Scripts\Activate
+
+
+Instalar as dependências
+>> pip install -r requirements.txt
+
+
+Execute a API através do comando abaixo, é necessário ter a chave de api e o código do sistema:
+>> python .\dynatrace_to_xlsx.py -tk **AQUI VAI A CHAVE DE API** -zi **AQUI VAI O CÓDIGO DO SISTEMA**
