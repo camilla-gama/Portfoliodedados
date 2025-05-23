@@ -18,7 +18,7 @@ A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja,
 
 - PASTA ESTUDO DE CASO:
   
-Premissas
+Premissas:
 O produto é da Indústria, porém, quem realiza a venda é o Distribuidor (Operador Logístico). Portanto, a indústria paga o distribuidor pela venda realizada. Precisamos garantir que o Distribuidor realizou a venda e qual o valor foi praticado.
 A Indústria paga um valor adicional a venda realizada, que seria a comissão do Distribuidor pela operação realizada. A Indústria precisa ver de forma clara o que precisa ser pago.
 Após realizar o pagamento é necessário dar baixa no extrato de ressarcimento do Distribuidor.
