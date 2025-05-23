@@ -15,3 +15,17 @@ Meta 99,00% para sistemas Muito Críticos
 Meta 98,50% pata sistemas Críticos. 
 
 A disponibilidade é calculada de acordo com o tempo de uso do sistema. Ou seja, caso tenha alguma manutenção que o mantenha indisponível por algum período, porém a mesma foi efetuada fora do horário de uso, este período indisponível não será considerado. 
+
+- PASTA ESTUDO DE CASO:
+  
+Premissas
+O produto é da Indústria, porém, quem realiza a venda é o Distribuidor (Operador Logístico). Portanto, a indústria paga o distribuidor pela venda realizada. Precisamos garantir que o Distribuidor realizou a venda e qual o valor foi praticado.
+A Indústria paga um valor adicional a venda realizada, que seria a comissão do Distribuidor pela operação realizada. A Indústria precisa ver de forma clara o que precisa ser pago.
+Após realizar o pagamento é necessário dar baixa no extrato de ressarcimento do Distribuidor.
+
+Desafio:
+✓ Precisamos incluir esse processo de Ressarcimento de Operação Logística dentro da
+plataforma.
+✓ Definir até 5 funcionalidades que seriam necessárias para a indústria conseguir um extrato
+de ressarcimento para realizar essa operação.
+
